@@ -1,3 +1,3 @@
 # calorie-tracker-JS
 
-Calorie tracker application made using vanilla JavaScript for the purposes of learning JavaScript. 
+Calorie tracker application made using vanilla JavaScript for learning purposes. 
