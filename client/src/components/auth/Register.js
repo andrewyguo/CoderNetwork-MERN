@@ -2,11 +2,13 @@ import React, { Fragment, useState } from 'react'
 // import axios from 'axios'; 
 import { Link } from 'react-router-dom'; 
 import { setAlert } from '../../actions/alert'; 
+import { register } from '../../actions/auth'; 
+
 // Redux 
 import { connect } from 'react-redux'; 
-import PropTypes from 'prop-types'; 
+import propTypes from 'prop-types'; 
 
-export const Register = ({ setAlert }) => {
+export const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
     name: '', 
     email: '', 
@@ -21,13 +23,13 @@ export const Register = ({ setAlert }) => {
 
   const onSubmit = async e => {
     e.preventDefault(); 
-    console.log('Registering user...'); 
-
+    console.log('Registering user... :) '); 
+    
     if(password !== password2) {
-      setAlert('Passwords do not match', 'danger'); 
+      setAlert('Passwords do not match :(', 'danger'); 
     } else {
-      console.log('Success'); 
-      /* The following code will be implemented in Redux 
+      register({ name, email, password }); 
+      /* The following code is implemented in the line above 
       const newUser = {  
         name, 
         email, 
@@ -106,7 +108,8 @@ export const Register = ({ setAlert }) => {
   ); 
 }
 
-Register.PropTypes = {
-  setAlert: PropTypes.func.isRequired 
+Register.propTypes = {
+  setAlert: propTypes.func.isRequired, 
+  register: propTypes.func.isRequired // Add to prop types  
 }; 
-export default connect(null, { setAlert })(Register); 
+export default connect(null, { setAlert, register })(Register); // Add actions 

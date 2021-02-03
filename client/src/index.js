@@ -11,7 +11,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// Set to 3000 so axios will not go to App.js base URL to make API Requests 
-axios.defaults.baseURL = 'http://localhost:3000'; 
-
 reportWebVitals();
