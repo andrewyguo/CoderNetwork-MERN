@@ -1,8 +1,12 @@
 import React, { Fragment, useState } from 'react'
 // import axios from 'axios'; 
 import { Link } from 'react-router-dom'; 
+import { setAlert } from '../../actions/alert'; 
+// Redux 
+import { connect } from 'react-redux'; 
+import PropTypes from 'prop-types'; 
 
-export const Register = () => {
+export const Register = ({ setAlert }) => {
   const [formData, setFormData] = useState({
     name: '', 
     email: '', 
@@ -20,7 +24,7 @@ export const Register = () => {
     console.log('Registering user...'); 
 
     if(password !== password2) {
-      console.log('Passwords do not match'); 
+      setAlert('Passwords do not match', 'danger'); 
     } else {
       console.log('Success'); 
       /* The following code will be implemented in Redux 
@@ -86,7 +90,7 @@ export const Register = () => {
           <input
             type="password"
             placeholder="Confirm Password"
-            name="password2"
+            name="password2" 
             minLength="6"
             value={password2} 
             onChange={e => onChange(e)}
@@ -102,4 +106,7 @@ export const Register = () => {
   ); 
 }
 
-export default Register; 
+Register.PropTypes = {
+  setAlert: PropTypes.func.isRequired 
+}; 
+export default connect(null, { setAlert })(Register); 
