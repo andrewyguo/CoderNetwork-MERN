@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 // import axios from 'axios'; 
 import { Link } from 'react-router-dom'; 
 import { setAlert } from '../../actions/alert'; 
-import { register } from '../../actions/auth'; 
+import { register, loadUser } from '../../actions/auth'; 
 
 // Redux 
 import { connect } from 'react-redux'; 
