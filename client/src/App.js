@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     store.dispatch(loadUser()); 
   }, []); // [] to run effect only once 
-  console.log("App running"); 
+
   return (
     <Provider store={store}> 
       <Router> 

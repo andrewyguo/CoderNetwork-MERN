@@ -1,14 +1,17 @@
 import React, { Fragment, useState } from 'react'
 // import axios from 'axios'; 
-import { Link } from 'react-router-dom'; 
+import { Link, Redirect } from 'react-router-dom'; 
+import { connect } from 'react-redux'; 
+import propTypes from 'prop-types'; 
+import { login } from '../../actions/auth'; 
 
-export const Login = () => {
+export const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '', 
     password: ''
   }); 
 
-  const { name, email, password, password2 } = formData; 
+  const { email, password } = formData; 
 
   // Enables form to be filled for all fields 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value }); 
@@ -17,8 +20,13 @@ export const Login = () => {
     e.preventDefault(); 
     console.log('Logging in user...'); 
 
-    console.log('Success'); 
-    
+    login(email, password); 
+  }; 
+
+  // Redirect if isAuth 
+  if(isAuthenticated) {
+    console.log("Authenticated. Redirecting to dashboard..."); 
+    return <Redirect to="/dashboard"/> 
   }
 
   return (  
@@ -47,7 +55,7 @@ export const Login = () => {
             required 
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Register" />
+        <input type="submit" className="btn btn-primary" value="Sign In" />
       </form>
       <p className="my-1">
         Don't have an account? <Link to="/register">Sign Up</Link>
@@ -56,4 +64,13 @@ export const Login = () => {
   ); 
 }
 
-export default Login; 
+Login.propTypes = { 
+  login: propTypes.func.isRequired, 
+  isAuthenticated: propTypes.bool 
+}
+
+const mapStateToProps = state => ({ 
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { login })(Login); // Connect needs mapStateToProps
