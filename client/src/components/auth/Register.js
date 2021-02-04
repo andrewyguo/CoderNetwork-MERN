@@ -6,7 +6,7 @@ import { register } from '../../actions/auth';
 
 // Redux 
 import { connect } from 'react-redux'; 
-import propTypes from 'prop-types'; 
+import PropTypes from 'prop-types'; 
 
 export const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -115,9 +115,9 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
 }
 
 Register.propTypes = {
-  setAlert: propTypes.func.isRequired, 
-  register: propTypes.func.isRequired, // Add to prop types  
-  isAuthenticated: propTypes.bool,
+  setAlert: PropTypes.func.isRequired, 
+  register: PropTypes.func.isRequired, // Add to prop types  
+  isAuthenticated: PropTypes.bool,
 }; 
 
 const mapStateToProps = state => ({

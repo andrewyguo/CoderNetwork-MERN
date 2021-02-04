@@ -1,5 +1,5 @@
 import React from 'react'; 
-import propTypes from 'prop-types'; 
+import PropTypes from 'prop-types'; 
 import { connect } from 'react-redux'; // Needed to connect with redux  
 
 const Alert = ({ alerts }) => alerts !== null && alerts.length > 0 && alerts.map(alert => (
@@ -10,7 +10,7 @@ const Alert = ({ alerts }) => alerts !== null && alerts.length > 0 && alerts.map
 
 
 Alert.propTypes = {
-  alerts: propTypes.array.isRequired
+  alerts: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => ({
