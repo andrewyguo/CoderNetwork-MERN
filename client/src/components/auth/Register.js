@@ -114,9 +114,9 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
   ); 
 }
 
-Register.propTypes = {
+Register.propTypes = { // Add to prop types  
   setAlert: PropTypes.func.isRequired, 
-  register: PropTypes.func.isRequired, // Add to prop types  
+  register: PropTypes.func.isRequired, 
   isAuthenticated: PropTypes.bool,
 }; 
 
