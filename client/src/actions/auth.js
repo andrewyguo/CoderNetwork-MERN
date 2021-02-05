@@ -13,12 +13,11 @@ import setAuthToken from '../utils/setAuthToken';
 
 // Load User 
 export const loadUser = () => async dispatch => {
-  if(localStorage.token !== undefined) {
+  if(localStorage.token && localStorage.token !== undefined) {
     console.log('Retreiving token from local storage...');
     setAuthToken(localStorage.token); 
   }
   try {
-    console.log("lele"); 
     const res = await axios.get('http://localhost:5000/api/auth'); 
 
     dispatch({
