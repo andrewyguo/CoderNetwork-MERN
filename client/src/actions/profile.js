@@ -174,7 +174,7 @@ export const deleteEducation = (id) => async dispatch => {
     });
 
 
-    dispatch(setAlert('Education Removed', 'caution'));
+    dispatch(setAlert('Education Removed.', 'caution'));
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,

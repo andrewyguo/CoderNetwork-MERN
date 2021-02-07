@@ -131,8 +131,8 @@ router.get('/user/:user_id', async (req, res) => {
 // @access Private 
 router.delete('/', auth, async (req, res) => {
   try {
-    // @todo - remove user posts 
-    // Remove profile and user 
+    // Remove user posts, profile, and user 
+    await Post.deleteMany({ user: req.user.id }); 
     await Profile.findOneAndRemove({ user: req.user.id }); 
     await User.findOneAndRemove({ _id: req.user.id }); 
 
@@ -207,7 +207,8 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
     profile.experience.splice(removeIndex, 1); 
 
     await profile.save(); 
-    res.json({ msg: "Experience Removed" }); 
+    // res.json({ msg: "Experience Removed" }); // ** Sending this json message causes an error when page reloads after delete 
+    res.json(profile); 
   } catch (error) {
     console.error(error.message); 
     res.status(500).send(`Server Error: ${error.message}`); 
@@ -279,7 +280,8 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
     profile.education.splice(removeIndex, 1); 
 
     await profile.save(); 
-    res.json({ msg: "Education Removed" }); 
+    // res.json({ msg: "Education Removed" }); 
+    res.json(profile); 
   } catch (error) {
     console.error(error.message); 
     res.status(500).send(`Server Error: ${error.message}`); 

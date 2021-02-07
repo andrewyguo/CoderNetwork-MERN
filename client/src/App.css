@@ -196,6 +196,10 @@ img {
   background: var(--success-color);
   color: #fff;
 }
+.alert-caution {
+  background: var(--caution-color);
+  color: #fff;
+}
 
 .btn-white,
 .bg-white,
