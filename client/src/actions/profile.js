@@ -4,13 +4,15 @@ import setAuthToken from '../utils/setAuthToken';
 
 import {
   GET_PROFILE, 
+  GET_PROFILES,
   PROFILE_ERROR,
   UPDATE_PROFILE, 
   ACCOUNT_DELETED, 
-  CLEAR_PROFILE
+  CLEAR_PROFILE, 
+  GET_REPOS
 } from './types'; 
 
-// Get current users profile 
+// Get current user profile 
 export const getCurrentProfile = () => async dispatch => { 
   if(localStorage.token && localStorage.token !== undefined) {
     console.log('Retreiving token from local storage...');
@@ -30,6 +32,66 @@ export const getCurrentProfile = () => async dispatch => {
     });
   }
 }
+
+// Get all user profile 
+export const getProfiles = () => async dispatch => { 
+  if(localStorage.token && localStorage.token !== undefined) {
+    console.log('Retreiving token from local storage...');
+    setAuthToken(localStorage.token); 
+  }
+  dispatch({ type: CLEAR_PROFILE }); // Prevent flashing of past user's profile 
+  try {
+    const res = await axios.get('http://localhost:5000/api/profile'); 
+
+    dispatch({
+      type: GET_PROFILEs, 
+      payload: res.data 
+    }); 
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR, 
+      payload: { msg: error.response.statusText, status: error.response.status }
+    });
+  }
+}
+
+// Get profile by User ID 
+export const getProfileById = (userID) => async dispatch => { 
+  if(localStorage.token && localStorage.token !== undefined) {
+    console.log('Retreiving token from local storage...');
+    setAuthToken(localStorage.token); 
+  }
+  try {
+    const res = await axios.get(`http://localhost:5000/api/profile/${userID}`); 
+
+    dispatch({
+      type: GET_PROFILE, 
+      payload: res.data 
+    }); 
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR, 
+      payload: { msg: error.response.statusText, status: error.response.status }
+    });
+  }
+}
+
+// Get GitHub Repos
+export const getGithubRepos = username => async dispatch => {
+  try {
+    const res = await axios.get(`http://localhost:5000/api/profile/github/${username}`);
+
+    dispatch({
+      type: GET_REPOS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
 
 // Create / Update Profile 
 export const createProfile = (formData, history, edit = false) => async dispatch => {
