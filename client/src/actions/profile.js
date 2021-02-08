@@ -14,10 +14,10 @@ import {
 
 // Get current user profile 
 export const getCurrentProfile = () => async dispatch => { 
-  if(localStorage.token && localStorage.token !== undefined) {
-    console.log('Retreiving token from local storage...');
-    setAuthToken(localStorage.token); 
-  }
+  // if(localStorage.token && localStorage.token !== undefined) {
+  //   console.log('Retreiving token from local storage...');
+  //   setAuthToken(localStorage.token); 
+  // }
   try {
     const res = await axios.get('http://localhost:5000/api/profile/me'); 
 
@@ -35,19 +35,21 @@ export const getCurrentProfile = () => async dispatch => {
 
 // Get all user profile 
 export const getProfiles = () => async dispatch => { 
-  if(localStorage.token && localStorage.token !== undefined) {
-    console.log('Retreiving token from local storage...');
-    setAuthToken(localStorage.token); 
-  }
+  // if(localStorage.token && localStorage.token !== undefined) {
+  //   console.log('Retreiving token from local storage...');
+  //   setAuthToken(localStorage.token); 
+  // }
   dispatch({ type: CLEAR_PROFILE }); // Prevent flashing of past user's profile 
   try {
     const res = await axios.get('http://localhost:5000/api/profile'); 
-
+    console.log('getting profiles'); 
+    console.log(res.data); 
     dispatch({
-      type: GET_PROFILEs, 
+      type: GET_PROFILES, 
       payload: res.data 
     }); 
   } catch (error) {
+    console.log(error); 
     dispatch({
       type: PROFILE_ERROR, 
       payload: { msg: error.response.statusText, status: error.response.status }
@@ -57,10 +59,10 @@ export const getProfiles = () => async dispatch => {
 
 // Get profile by User ID 
 export const getProfileById = (userID) => async dispatch => { 
-  if(localStorage.token && localStorage.token !== undefined) {
-    console.log('Retreiving token from local storage...');
-    setAuthToken(localStorage.token); 
-  }
+  // if(localStorage.token && localStorage.token !== undefined) {
+  //   console.log('Retreiving token from local storage...');
+  //   setAuthToken(localStorage.token); 
+  // }
   try {
     const res = await axios.get(`http://localhost:5000/api/profile/${userID}`); 
 
