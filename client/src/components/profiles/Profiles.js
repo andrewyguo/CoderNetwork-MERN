@@ -11,6 +11,9 @@ const Profiles = ({ getProfiles, profile: { profiles, loading }}) => {
     getProfiles();
   }, []); 
 
+  if(profiles === undefined) {
+    location.reload(); 
+  }
   return (
     <Fragment>
       { loading ? <Spinner/> : 
@@ -20,7 +23,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading }}) => {
             <i className="fab fa-connectdevelop"></i> Connnect with other coders! 
           </p>
           <div className="profiles"> 
-            { profiles.length > 0 ? profiles.map(p => { 
+            { (profiles && profiles.length > 0) ? profiles.map(p => { 
               return <ProfileItem key={p._id} profile={p} />
             }) : 
               <div>No Profiles Found</div>
