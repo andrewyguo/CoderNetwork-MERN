@@ -27,3 +27,7 @@ export const GET_REPOS = 'GET_REPOS';
 
 // Account 
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED'; 
+
+// Posts 
+export const GET_POSTS = 'GET_POSTS'; 
+export const POST_ERROR = 'POST_ERROR'; 

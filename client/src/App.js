@@ -15,6 +15,7 @@ import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken'; 
 import PrivateRoute from './components/routing/PrivateRoute'; 
 import Profiles from './components/profiles/Profiles'; 
+import Posts from './components/posts/Posts'; 
 
 // Redux 
 import { Provider } from 'react-redux'; 
@@ -48,6 +49,7 @@ function App() {
               <PrivateRoute exact path="/edit-profile" component={ EditProfile } /> 
               <PrivateRoute exact path="/add-experience" component={ AddExperience } /> 
               <PrivateRoute exact path="/add-education" component={ AddEducation } /> 
+              <PrivateRoute exact path="/posts" component={ Posts } /> 
             </Switch>
           </section>
         </Fragment>

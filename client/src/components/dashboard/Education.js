@@ -6,8 +6,6 @@ import { connect } from 'react-redux';
 import { deleteEducation } from '../../actions/profile';
 
 const Education = ({ education, deleteEducation }) => {
-  console.log('Education: '); 
-  console.log(education); 
   if(!education) { 
     return null; 
   }
