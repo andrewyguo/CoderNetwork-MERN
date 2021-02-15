@@ -11,9 +11,9 @@ const Profiles = ({ getProfiles, profile: { profiles, loading }}) => {
     getProfiles();
   }, []); 
 
-  if(profiles === undefined) {
-    location.reload(); 
-  }
+  // if(profiles === undefined) {
+  //   location.reload(); 
+  // }
   return (
     <Fragment>
       { loading ? <Spinner/> : 

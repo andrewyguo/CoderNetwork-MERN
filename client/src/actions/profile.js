@@ -64,7 +64,7 @@ export const getProfileById = (userID) => async dispatch => {
   //   setAuthToken(localStorage.token); 
   // }
   try {
-    const res = await axios.get(`http://localhost:5000/api/profile/${userID}`); 
+    const res = await axios.get(`http://localhost:5000/api/profile/user/${userID}`); 
 
     dispatch({
       type: GET_PROFILE, 

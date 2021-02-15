@@ -28,7 +28,7 @@ const PostItem = ({
           Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
         </p>
 
-        {showActions && (
+        { showActions && (
           <Fragment>
             <button
               // onClick={() => addLike(_id)}
@@ -51,7 +51,7 @@ const PostItem = ({
                 <span className='comment-count'>{comments.length}</span>
               )}
             </Link>
-            {!auth.loading && user === auth.user._id && ( // Match Post author with user 
+            { !auth.loading && user === auth.user._id && ( // Match Post author with user
               <button
                 onClick={() => deletePost(_id)}
                 type='button'
