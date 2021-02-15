@@ -36,7 +36,8 @@ export default function(state = initialState, action) {
       return {
         ...state, 
         error: payload, 
-        loading: false 
+        loading: false, 
+        profile: null // Clear the profile to fix security flaw  
       }; 
     case CLEAR_PROFILE: 
       return { 
