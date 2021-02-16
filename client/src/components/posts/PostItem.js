@@ -43,7 +43,7 @@ const PostItem = ({
               </span> 
             </button>
             <button
-              onClick={() => removeLikes(_id)}
+              onClick={() => removeLike(_id)}
               type='button'
               className='btn btn-light'
             >
