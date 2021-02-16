@@ -9,10 +9,11 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
     getGithubRepos(username);
   }, [getGithubRepos]);
 
+  console.log(repos); 
   return (
     <div className='profile-github'>
       <h2 className='text-primary my-1'>Github Repos</h2>
-      {repos === null ? (
+      {repos === null || repos === undefined ? (
         <Spinner />
       ) : (
         repos.map(repo => (

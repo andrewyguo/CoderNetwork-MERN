@@ -12,6 +12,7 @@ import {
 } from './types'; 
 import setAuthToken from '../utils/setAuthToken'; 
 
+axios.defaults.baseURL = 'http://localhost:5000'; 
 // Load User 
 export const loadUser = () => async dispatch => {
   if(localStorage.token && localStorage.token !== undefined) {
@@ -19,7 +20,7 @@ export const loadUser = () => async dispatch => {
     setAuthToken(localStorage.token); 
   }
   try {
-    const res = await axios.get('http://localhost:5000/api/auth'); 
+    const res = await axios.get(`${axios.defaults.baseURL}/api/auth`); 
 
     dispatch({
       type: USER_LOADED, 
