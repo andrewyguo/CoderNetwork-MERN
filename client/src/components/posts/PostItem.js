@@ -12,7 +12,8 @@ const PostItem = ({
   deletePost,
   auth,
   post: { _id, text, name, avatar, user, likes, comments, date },
-  showActions
+  showActions, 
+  displayLikes
 }) => {
 
   return (
@@ -28,7 +29,7 @@ const PostItem = ({
         <p className='post-date'>
           Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
         </p>
-
+        
         {showActions && (
           <Fragment>
             <button
@@ -37,10 +38,12 @@ const PostItem = ({
               className='btn btn-light'
             >
               <i className='fas fa-thumbs-up' />{' '}
-              <span>{likes.length > 0 && <span>{likes.length}</span>}</span> 
+              <span>
+                {likes.length > 0 && <span>{likes.length}</span>}
+              </span> 
             </button>
             <button
-              onClick={() => removeLike(_id)}
+              onClick={() => removeLikes(_id)}
               type='button'
               className='btn btn-light'
             >
@@ -63,12 +66,19 @@ const PostItem = ({
             )}
           </Fragment>
         )}
+        {displayLikes && (
+          <Fragment>          
+            <i className='fas fa-thumbs-up' />{' '}
+            <span>{likes.length}</span>     
+            </Fragment>
+        )}
       </div>
     </div>
   );
 }
 PostItem.defaultProps = {
-  showActions: true
+  showActions: true, 
+  displayLikes: false
 };
 
 PostItem.propTypes = {
@@ -77,7 +87,8 @@ PostItem.propTypes = {
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
-  showActions: PropTypes.bool
+  showActions: PropTypes.bool, 
+  displayLikes: PropTypes.bool 
 }
 
 const mapStateToProps = state => ({
