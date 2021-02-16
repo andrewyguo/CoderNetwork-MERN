@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
-import { deletePost } from '../../actions/post'; //  addLike, removeLike, 
+import { deletePost, addLike, removeLike } from '../../actions/post';  
 
 const PostItem = ({
   addLike,
@@ -14,6 +14,7 @@ const PostItem = ({
   post: { _id, text, name, avatar, user, likes, comments, date },
   showActions
 }) => {
+
   return (
     <div className='post bg-white p-1 my-1'>
       <div>
@@ -28,10 +29,10 @@ const PostItem = ({
           Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
         </p>
 
-        { showActions && (
+        {showActions && (
           <Fragment>
             <button
-              // onClick={() => addLike(_id)}
+              onClick={() => addLike(_id)}
               type='button'
               className='btn btn-light'
             >
@@ -39,7 +40,7 @@ const PostItem = ({
               <span>{likes.length > 0 && <span>{likes.length}</span>}</span> 
             </button>
             <button
-              // onClick={() => removeLike(_id)}
+              onClick={() => removeLike(_id)}
               type='button'
               className='btn btn-light'
             >
@@ -51,7 +52,7 @@ const PostItem = ({
                 <span className='comment-count'>{comments.length}</span>
               )}
             </Link>
-            { !auth.loading && user === auth.user._id && ( // Match Post author with user
+            {!auth.loading && user === auth.user._id && ( // Match Post author with user
               <button
                 onClick={() => deletePost(_id)}
                 type='button'
@@ -66,6 +67,9 @@ const PostItem = ({
     </div>
   );
 }
+PostItem.defaultProps = {
+  showActions: true
+};
 
 PostItem.propTypes = {
   post: PropTypes.object.isRequired,
@@ -82,5 +86,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deletePost } // addLike, removeLike,
+  { deletePost, addLike, removeLike } 
 )(PostItem);
