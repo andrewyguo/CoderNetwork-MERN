@@ -40,7 +40,7 @@ const AddEducation = ({ addEducation, history }) => {
        Add Education
       </h1>
       <p className="lead">
-        <i className="fas fa-code-branch"></i> Add any education you have
+        <i className="fas fa-graduation-cap"></i> Add any education you have
       </p>
       <small>* = required field</small>
       <form className='form' onSubmit={e => onSubmit(e)}>
@@ -97,7 +97,7 @@ const AddEducation = ({ addEducation, history }) => {
                 toggleDisabled(!toDateDisabled);
               }}
             />{' '}
-            Current Job
+            Currently Attending
           </p>
         </div>
         { !toDateDisabled && 
