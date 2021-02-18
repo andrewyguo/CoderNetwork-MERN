@@ -121,7 +121,7 @@ export const removeLike = id => async dispatch => {
     console.log(error); 
     dispatch({
       type: POST_ERROR,
-      payload: { msg: error, status: error.response.status } // .response.statusText
+      payload: { msg: error, status: error.response.status } 
     });
   }
 }
