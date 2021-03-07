@@ -22,7 +22,7 @@ export default function(state = initialState, action) {
     case GET_PROFILE: 
     case UPDATE_PROFILE: 
       return {
-        ...status, 
+        ...state, 
         profile: payload, 
         loading: false 
       }; 
