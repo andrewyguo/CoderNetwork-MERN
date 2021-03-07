@@ -18,14 +18,6 @@ app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/posts', require('./routes/api/posts')); 
 
-// // Bypass CORS 
-// app.use((req, res, next) => {
-//   res.append('Access-Control-Allow-Origin', ['http://localhost:3000']); 
-//   res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//   res.append('Access-Control-Allow-Headers', ['Content-Type', 'x-auth-token']);
-//   next();
-// }); 
-
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
