@@ -1,1 +1,2 @@
-worker: npm run dev 
+web: npm run client 
+worker: npm run server
