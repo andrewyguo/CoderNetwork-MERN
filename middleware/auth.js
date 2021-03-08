@@ -7,7 +7,7 @@ module.exports = function(req, res, next) {
 
   // Check if token exists 
   if(!token) {
-    return res.status(401).json({ msg: 'No token, authorization denied by /middleware/auth.js.' }); 
+    return res.status(401).json({ msg: 'No token, authorization denied. ' }); 
   }
   // Verify Token 
   try {
