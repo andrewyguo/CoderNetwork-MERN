@@ -3,3 +3,4 @@ package-lock.json
 .prettierrc
 config/production.json
 /img
+/client/build
