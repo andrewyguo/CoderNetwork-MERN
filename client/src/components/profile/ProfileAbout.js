@@ -9,7 +9,7 @@ const ProfileAbout = ({
   }
 }) => {
   let bio_header = ''; 
-  name.trim().split(' ')[0].slice(-1) == 's' ? 
+  name.trim().split(' ')[0].slice(-1) === 's' ? 
     (bio_header = name.trim().split(' ')[0] + '\' Bio') :
     (bio_header = name.trim().split(' ')[0] + '\'s Bio') 
 
