@@ -1,5 +1,5 @@
-## CoderNetwork 
-# A Social Media Network for Programmers 
+# CoderNetwork 
+## A Social Media Network for Programmers 
 Created a social network application with the goal of learning the MERN Stack. 
 
 Application can be found at https://coder-network.herokuapp.com/.
