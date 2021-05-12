@@ -1,6 +1,6 @@
 # CoderNetwork 
 ## A Social Media Network for Programmers 
-Created a social network application with the goal of learning the MERN Stack. 
+Guided project to create a social network application with the goal of learning the MERN Stack. Original project author: https://github.com/bradtraversy/devconnector_2.0
 
 Application can be found at https://coder-network.herokuapp.com/.
 
